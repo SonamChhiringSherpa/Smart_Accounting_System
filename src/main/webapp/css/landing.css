@@ -1,0 +1,177 @@
+@charset "UTF-8";
+/* ===== NAVBAR ===== */
+body {
+	margin: 0;
+	font-family: 'Segoe UI', Tahoma, sans-serif;
+	background: #f4f6f9;
+	padding-top: 60px;
+}
+
+.navbar {
+	width: 100%;
+	background: #ffffff;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+.nav-container {
+	max-width: 1200px;
+	margin: auto;
+	padding: 0 20px;
+	height: 60px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* Logo */
+.logo {
+	font-size: 18px;
+	font-weight: 600;
+	color: #333;
+}
+
+/* Links */
+.nav-links a {
+	margin: 0 10px;
+	text-decoration: none;
+	color: #555;
+	font-size: 14px;
+}
+
+.nav-links a:hover {
+	color: #4a90e2;
+}
+
+/* Buttons */
+.nav-actions {
+	display: flex;
+	gap: 10px;
+}
+
+.btn {
+	padding: 8px 14px;
+	border-radius: 6px;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+/* Primary Button */
+.btn-primary {
+	background: #4a90e2;
+	color: white;
+}
+
+.btn-primary:hover {
+	background: #357abd;
+}
+
+/* Secondary Button */
+.btn-secondary {
+	background: white;
+	border: 1px solid #ddd;
+	color: #333;
+}
+
+.btn-secondary:hover {
+	background: #f5f5f5;
+}
+
+/* ===== HERO ===== */
+.hero {
+	background: linear-gradient(135deg, #4facfe, #00f2fe);
+	color: white;
+	text-align: center;
+	padding: 80px 20px;
+}
+
+.hero h1 {
+	font-size: 32px;
+	margin-bottom: 10px;
+}
+
+.hero p {
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+.hero-buttons .btn {
+	margin: 5px;
+}
+
+/* ===== FEATURES ===== */
+.features {
+	text-align: center;
+	padding: 50px 20px;
+}
+
+.feature-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 20px;
+	max-width: 1000px;
+	margin: auto;
+}
+
+/* CARD */
+.card {
+	background: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== HOW ===== */
+.how {
+	text-align: center;
+	padding: 50px 20px;
+}
+
+.steps {
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+	flex-wrap: wrap;
+}
+
+.step {
+	background: white;
+	padding: 20px;
+	border-radius: 10px;
+	width: 120px;
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.step h3 {
+	color: #4a90e2;
+}
+
+/* ===== CTA ===== */
+.cta {
+	text-align: center;
+	padding: 50px 20px;
+	background: #ffffff;
+}
+
+
+/* ===== FOOTER ===== */
+.footer {
+	background: #333333;
+	border-top: 1px solid #eee;
+	position: static;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.footer-container {
+	max-width: 1200px;
+	margin: auto;
+	padding: 20px;
+	text-align: center;
+	color: white;
+	font-size: 13px;
+}
