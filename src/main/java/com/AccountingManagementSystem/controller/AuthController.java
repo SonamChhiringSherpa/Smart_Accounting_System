@@ -68,6 +68,7 @@ public class AuthController extends HttpServlet {
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		
 		if (AdminName.equals(username) && AdminPassword.equals(password)) {
 		    HttpSession session = request.getSession();
 		    session.setAttribute("role", "admin");
@@ -93,11 +94,13 @@ public class AuthController extends HttpServlet {
 
 				if (dbPassword.equals(hashedInput)) {
 
-					// ✅ Session
+					//  Session
 					HttpSession session = request.getSession();
 					session.setAttribute("user", rs.getString("username"));
+					
+					session.setAttribute("userId", rs.getInt("id"));
 
-					// ✅ Cookie
+					//  Cookie
 					Cookie userCookie = new Cookie("user_id", String.valueOf(rs.getInt("id")));
 					userCookie.setMaxAge(60 * 60 * 24);
 					response.addCookie(userCookie);

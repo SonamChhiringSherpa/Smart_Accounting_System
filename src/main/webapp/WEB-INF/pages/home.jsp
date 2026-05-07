@@ -16,7 +16,7 @@
 			<h2>Smart Accounting</h2>
 
 			<a href="#" class="active">Dashboard</a> 
-			<a href="#">Add Transaction</a> 
+			<a href="add-transaction">Add Transaction</a> 
 			<a href="#">Transactions</a> 
 			<a href="#">Reports</a> 
 			<a href="#">Analytics</a>

@@ -1,0 +1,149 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f4f6f9;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: #2b8de0; /* blue */
+    color: white;
+    padding: 20px;
+}
+
+/* Title */
+.sidebar h2 {
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+/* Remove bullets */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Spacing between items */
+.sidebar ul li {
+    margin: 8px 0;
+}
+
+/* Links */
+.sidebar ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+/* Hover effect */
+.sidebar ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Active item */
+.sidebar ul li.active a {
+    background: rgba(255, 255, 255, 0.25);
+    font-weight: 500;
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.header input {
+    width: 300px;
+    padding: 8px;
+}
+
+.user {
+    font-weight: bold;
+}
+
+/* CONTENT */
+.content {
+    padding: 30px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    margin-top: 20px;
+}
+
+/* TABS */
+.tabs {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.tabs button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    background: #eee;
+}
+
+.tabs button.active {
+    background: #28a745;
+    color: white;
+}
+
+/* FORM */
+form label {
+    display: block;
+    margin-top: 10px;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+textarea {
+    height: 80px;
+}
+
+/* BUTTONS */
+.actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cancel {
+    background: #ccc;
+    border: none;
+    padding: 10px;
+}
+
+.submit {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+}
