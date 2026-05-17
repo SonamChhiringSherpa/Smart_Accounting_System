@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
     <wb-module deploy-name="AccountingManagementSystem">
+                
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                
         <dependent-module archiveName="mysql-connector-j-9.6.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/sonamchhiringsherpa/Desktop/College/2nd year/2nd sem/Dsa/accounting_system/mysql-connector-j-9.6.0.jar">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+        <dependent-module archiveName="jbcrypt-0.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/sonamchhiringsherpa/Desktop/College/2nd year/2nd sem/Dsa/accounting_system/jbcrypt-0.4.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jBCrypt-0.4-javadoc.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/sonamchhiringsherpa/Desktop/College/2nd year/2nd sem/Dsa/accounting_system/jBCrypt-0.4-javadoc.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
+                
         <property name="context-root" value="AccountingManagementSystem"/>
+                
         <property name="java-output-path" value="/AccountingManagementSystem/build/classes"/>
+            
     </wb-module>
+    
 </project-modules>

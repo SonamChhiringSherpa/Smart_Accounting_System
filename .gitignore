@@ -1,0 +1,4 @@
+mail.properties
+.env
+src/main/java/mail.properties
+build/classes/mail.properties

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.text.DecimalFormat, java.util.List, com.AccountingManagementSystem.model.Transaction" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%
 DecimalFormat money = new DecimalFormat("#,##0.00");
 double totalIncome = request.getAttribute("totalIncome") == null ? 0 : (Double) request.getAttribute("totalIncome");
 double totalExpense = request.getAttribute("totalExpense") == null ? 0 : (Double) request.getAttribute("totalExpense");
 double netProfit = request.getAttribute("netProfit") == null ? 0 : (Double) request.getAttribute("netProfit");
-List<Transaction> recentTransactions = (List<Transaction>) request.getAttribute("recentTransactions");
+int transactionCount = request.getAttribute("transactionCount") == null ? 0 : (Integer) request.getAttribute("transactionCount");
 String username = String.valueOf(session.getAttribute("user"));
 %>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ String username = String.valueOf(session.getAttribute("user"));
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard | Smart Accounting System</title>
+<title>Reports | Smart Accounting System</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/app.css">
 </head>
 <body>
@@ -21,31 +21,25 @@ String username = String.valueOf(session.getAttribute("user"));
 		<aside class="sidebar">
 			<h1 class="brand"><span class="brand-mark">S</span><span>Smart Accounting System</span></h1>
 			<nav class="nav-menu">
-				<a class="nav-link active" href="${pageContext.request.contextPath}/home"><span class="nav-icon">D</span>Dashboard</a>
+				<a class="nav-link" href="${pageContext.request.contextPath}/home"><span class="nav-icon">D</span>Dashboard</a>
 				<a class="nav-link" href="${pageContext.request.contextPath}/add-transaction"><span class="nav-icon">+</span>Add Transaction</a>
 				<a class="nav-link" href="${pageContext.request.contextPath}/transactions"><span class="nav-icon">T</span>Transactions</a>
-				<a class="nav-link" href="${pageContext.request.contextPath}/reports"><span class="nav-icon">R</span>Reports</a>
+				<a class="nav-link active" href="${pageContext.request.contextPath}/reports"><span class="nav-icon">R</span>Reports</a>
 				<a class="nav-link" href="${pageContext.request.contextPath}/analytics"><span class="nav-icon">A</span>Analytics</a>
 				<a class="nav-link" href="${pageContext.request.contextPath}/profile"><span class="nav-icon">P</span>Profile</a>
-				<form action="${pageContext.request.contextPath}/logout" method="get">
-					<button class="nav-button" type="submit"><span class="nav-icon">L</span>Logout</button>
-				</form>
+				<form action="${pageContext.request.contextPath}/logout" method="get"><button class="nav-button" type="submit"><span class="nav-icon">L</span>Logout</button></form>
 			</nav>
 		</aside>
 
 		<div class="content-shell">
 			<header class="topnav">
 				<div class="topnav-title">Smart Accounting System</div>
-				<div class="search-box">
-					<input type="search" placeholder="Search records">
-				</div>
+				<div class="search-box"><input type="search" placeholder="Search records"></div>
 				<details class="profile-menu">
 					<summary><span class="avatar"><%= username.substring(0, 1).toUpperCase() %></span><span><%= username %></span></summary>
 					<div class="profile-dropdown">
 						<a href="${pageContext.request.contextPath}/profile">Profile</a>
-						<form action="${pageContext.request.contextPath}/logout" method="get">
-							<button type="submit">Logout</button>
-						</form>
+						<form action="${pageContext.request.contextPath}/logout" method="get"><button type="submit">Logout</button></form>
 					</div>
 				</details>
 			</header>
@@ -53,10 +47,28 @@ String username = String.valueOf(session.getAttribute("user"));
 			<main class="main">
 				<section class="page-header">
 					<div>
-						<h2 class="page-title">Dashboard</h2>
-						<p class="page-subtitle">Track income, expenses, and recent financial activity.</p>
+						<h2 class="page-title">Reports</h2>
+						<p class="page-subtitle">Generate simple summaries for a selected period.</p>
 					</div>
-					<a class="button" href="${pageContext.request.contextPath}/add-transaction">Add Transaction</a>
+				</section>
+
+				<section class="panel">
+					<div class="panel-header">
+						<h3>Date Range</h3>
+					</div>
+					<div class="panel-body">
+						<form class="report-form" action="${pageContext.request.contextPath}/reports" method="post">
+							<div>
+								<label for="fromDate">From</label>
+								<input id="fromDate" class="form-control" type="date" name="fromDate">
+							</div>
+							<div>
+								<label for="toDate">To</label>
+								<input id="toDate" class="form-control" type="date" name="toDate">
+							</div>
+							<button class="button" type="submit">Generate Report</button>
+						</form>
+					</div>
 				</section>
 
 				<section class="grid stats-grid">
@@ -76,34 +88,10 @@ String username = String.valueOf(session.getAttribute("user"));
 
 				<section class="panel">
 					<div class="panel-header">
-						<h3>Recent Transactions</h3>
-						<a class="button-secondary" href="${pageContext.request.contextPath}/transactions">View All</a>
+						<h3>Report Details</h3>
 					</div>
-					<div class="table-wrap">
-						<table>
-							<thead>
-								<tr>
-									<th>Date</th>
-									<th>Type</th>
-									<th>Amount</th>
-									<th>Category</th>
-								</tr>
-							</thead>
-							<tbody>
-								<% if (recentTransactions == null || recentTransactions.isEmpty()) { %>
-								<tr><td colspan="4" class="empty-state">No transactions yet.</td></tr>
-								<% } else {
-									for (Transaction transaction : recentTransactions) { %>
-								<tr>
-									<td><%= transaction.getDate() %></td>
-									<td><span class="badge <%= transaction.getType() %>"><%= transaction.getType() %></span></td>
-									<td>Rs. <%= money.format(transaction.getAmount()) %></td>
-									<td><%= transaction.getCategory() %></td>
-								</tr>
-								<% }
-								} %>
-							</tbody>
-						</table>
+					<div class="panel-body">
+						<p class="page-subtitle">Total recorded transactions: <strong><%= transactionCount %></strong></p>
 					</div>
 				</section>
 			</main>

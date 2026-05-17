@@ -20,7 +20,12 @@
     <div class="card">
         <h3>Register</h3>
 
+        <% if (request.getAttribute("error") != null) { %>
+        <p class="message error"><%= request.getAttribute("error") %></p>
+        <% } %>
+
         <form action="register" method="post">
+            <input type="hidden" name="csrfToken" value="${csrfToken}">
 
             <label>Full Name</label>
             <input type="text" name="fullName" placeholder="Enter your full name" required>
@@ -32,7 +37,18 @@
             <input type="email" name="email" placeholder="Enter your email" required>
 
             <label>Password</label>
-            <input type="password" name="password" placeholder="Create a password" required>
+            <div class="password-control">
+                <input type="password" name="password" placeholder="Create a password" required>
+                <button class="password-toggle" type="button" data-password-toggle aria-label="Show password" title="Show password"></button>
+            </div>
+
+            <label>Confirm Password</label>
+            <div class="password-control">
+                <input type="password" name="confirmPassword" placeholder="Confirm your password" required>
+                <button class="password-toggle" type="button" data-password-toggle aria-label="Show password" title="Show password"></button>
+            </div>
+
+            <p class="hint">Password must be 8+ characters with uppercase, lowercase, number, and special character.</p>
 
             <button type="submit">Register</button>
         </form>
@@ -46,5 +62,6 @@
  
 </div>
 
+<script src="${pageContext.request.contextPath}/js/auth.js"></script>
 </body>
 </html>

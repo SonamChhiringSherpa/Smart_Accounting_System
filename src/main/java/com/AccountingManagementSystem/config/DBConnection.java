@@ -8,6 +8,7 @@ public class DBConnection {
 	private static final String USER = "root";
 	private static final String PASSWORD = "";
 
+	// This method creates and returns one database connection.
 	public static Connection getConnection() {
 		Connection conn = null;
 
@@ -15,7 +16,7 @@ public class DBConnection {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println("Database connection failed: " + e.getMessage());
 		}
 
 		return conn;

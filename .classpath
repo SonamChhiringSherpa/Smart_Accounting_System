@@ -14,7 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/Users/sonamchhiringsherpa/Desktop/College/2nd year/2nd sem/Dsa/accounting_system/mysql-connector-j-9.6.0.jar"/>
-	<classpathentry kind="lib" path="/Users/sonamchhiringsherpa/Desktop/College/2nd year/2nd sem/Dsa/accounting_system/jBCrypt-0.4-javadoc.jar"/>
-	<classpathentry kind="lib" path="/Users/sonamchhiringsherpa/eclipse-workspace/workshop1/src/main/webapp/WEB-INF/lib/jbcrypt-0.4.jar"/>
+	<classpathentry kind="lib" path="/Users/sonamchhiringsherpa/Desktop/College/2nd year/2nd sem/Dsa/accounting_system/jbcrypt-0.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

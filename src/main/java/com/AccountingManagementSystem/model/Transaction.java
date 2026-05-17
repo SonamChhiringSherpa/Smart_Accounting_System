@@ -53,6 +53,5 @@ public class Transaction {
 			this.description = description;
 		}
 
-	    // Getters & Setters
 	
 }
